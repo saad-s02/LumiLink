@@ -23,6 +23,7 @@
 - [Firebase ESP32 Client Library](https://github.com/mobizt/Firebase-ESP32)
 - [WiFiManager Library](https://github.com/tzapu/WiFiManager)
 - [FastLED Library](https://github.com/FastLED/FastLED)
+- [Bounce2 Library](https://github.com/thomasfredericks/Bounce2)
 
 ## Setup Instructions
 
@@ -33,6 +34,7 @@ Ensure you have the following libraries installed in the Arduino IDE:
 - **Firebase ESP32 Client**: Install via Library Manager or download from [Firebase ESP32 Client Library](https://github.com/mobizt/Firebase-ESP32).
 - **WiFiManager**: Install via Library Manager or download from [WiFiManager](https://github.com/tzapu/WiFiManager).
 - **FastLED**: Install via Library Manager or download from [FastLED](https://github.com/FastLED/FastLED).
+- **Bounce2**: Install via Library Manager or download from [Bounce2](https://github.com/thomasfredericks/Bounce2).
 
 ### 2. Firebase Setup
 
@@ -62,24 +64,19 @@ After uploading the code, the ESP32 will start in access point mode (AP mode) th
 ```cpp
 #include <WiFiManager.h>
 #include <FirebaseESP32.h>
+#include <FastLED.h>
+#include <Bounce2.h>
 
 // Firebase and WiFi configuration
 #define FIREBASE_HOST "your-firebase-url"
-#define FIREBASE_AUTH "your-firebase-api-key"
 
-FirebaseData fbdo;
-FirebaseAuth auth;
-FirebaseConfig config;
-
-String path = "/LumiLink/LED_status";
-bool toggle_pressed = false;
 int button1 = 13; // GPIO pin for button
 int LED = 2; // GPIO pin for built-in LED
 ```
 ## How It Works
 
 1. **Button Press Detection:** The ESP32 uses an interrupt to detect when the button is pressed.
-2. **Firebase Synchronization:** When the button is pressed, the built-in LED toggles its state, and the state is updated in Firebase.
+2. **Firebase Synchronization:** When the button is pressed, the LED toggles its state, and the state is updated in Firebase.
 3. **Remote LED Update:** The other ESP32 device reads the updated state from Firebase and toggles its LED accordingly.
 
 ## Customization
