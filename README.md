@@ -75,7 +75,7 @@ String path = "/LumiLink/LED_status";
 bool toggle_pressed = false;
 int button1 = 13; // GPIO pin for button
 int LED = 2; // GPIO pin for built-in LED
-
+```
 ## How It Works
 
 1. **Button Press Detection:** The ESP32 uses an interrupt to detect when the button is pressed.
